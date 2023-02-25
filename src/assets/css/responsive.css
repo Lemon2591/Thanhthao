@@ -1,0 +1,23 @@
+@media(max-width:1425px) {}
+
+@media (min-width: 1125px) and (max-width:1425px) {
+    .home-item {
+        width: calc(90%/2);
+    }
+}
+
+/* Tablet */
+@media (min-width:740px) and (max-width:1125px) {
+    .home-item {
+        width: calc(90%/2);
+    }
+}
+
+
+/* Mobile */
+
+@media (max-width:810px) {
+    .home-item {
+        width: calc(100%);
+    }
+}
