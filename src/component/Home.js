@@ -5,6 +5,7 @@ import { Button, Popover } from "antd";
 import Booking from "./Booking";
 import BookingList from "./BookingList";
 import UserInfo from "./UserInfo";
+import { Spin, message } from "antd";
 
 const service = [
   {
@@ -56,9 +57,9 @@ function Home() {
     service: "",
     title: "",
   });
+  const accessTokenObj = JSON.parse(localStorage.getItem("userInfo"));
   useEffect(() => {
     const fetchInfo = async () => {
-      const accessTokenObj = JSON.parse(localStorage.getItem("userInfo"));
       if (!accessTokenObj) navigate("/");
       const { data } = await http.post("/user/data/patient/v2", {
         idAccount: accessTokenObj?.id,
@@ -72,7 +73,7 @@ function Home() {
       <div className="home-content">
         <div className="home-bg">
           <div className="home-display">
-            {userInfo && (
+            {accessTokenObj && (
               <div className="text-right mr-10 flex justify-end p-4">
                 <span className="font-medium text-2xl mr-3">Xin chào :</span>
                 <Popover
@@ -116,7 +117,9 @@ function Home() {
                   trigger="click"
                 >
                   <h1 className="font-semibold text-3xl hover:underline cursor-pointer">
-                    {userInfo?.fullName}
+                    {userInfo?.fullName
+                      ? userInfo?.fullName
+                      : accessTokenObj.userName}
                   </h1>
                 </Popover>
               </div>
@@ -146,14 +149,31 @@ function Home() {
                       </span> */}
                           <div className="booking">
                             <span
-                              onClick={() =>
-                                setShowBookingForm({
-                                  isOpen: true,
-                                  service: data,
-                                  title:
-                                    "Đặt lịch " + data?.service_name + " ngay",
-                                })
-                              }
+                              onClick={() => {
+                                const dataBooking = JSON.parse(
+                                  localStorage.getItem("booking-list")
+                                );
+                                if (
+                                  dataBooking === null ||
+                                  !dataBooking ||
+                                  dataBooking.length < 6
+                                ) {
+                                  setShowBookingForm({
+                                    isOpen: true,
+                                    service: data,
+                                    title:
+                                      "Đặt lịch " +
+                                      data?.service_name +
+                                      " ngay",
+                                  });
+                                } else {
+                                  if (dataBooking.length >= 6) {
+                                    message.error(
+                                      "Bạn không được đặt quá 6 lịch trong một ngày !"
+                                    );
+                                  }
+                                }
+                              }}
                             >
                               Đặt lịch ngay
                             </span>

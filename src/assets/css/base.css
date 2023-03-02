@@ -62,3 +62,10 @@ input:focus {
     outline: none;
     /* transition: .5s; */
 }
+
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+    color: #000;
+}

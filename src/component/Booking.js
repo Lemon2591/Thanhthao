@@ -34,24 +34,24 @@ const opts = [
 
 const timeRange = [
   {
-    label: "8H-10H",
-    value: "8H-10H",
+    label: "08:00 AM - 10:00 AM",
+    value: "08:00 AM - 10:00 AM",
   },
   {
-    label: "10H-12H",
-    value: "10H-12H",
+    label: "10:00 AM - 12:00 AM",
+    value: "10:00 AM - 12:00 AM",
   },
   {
-    label: "14H-16H",
-    value: "14H-16H",
+    label: "14:00 PM -16:00 PM",
+    value: "14:00 PM -16:00 PM",
   },
   {
-    label: "16H-18H",
-    value: "16H-18H",
+    label: "16:00 PM - 18:00 PM",
+    value: "16:00 PM - 18:00 PM",
   },
   {
-    label: "20H-22H",
-    value: "20H-22H",
+    label: "20:00 PM - 22:00 PM",
+    value: "20:00 PM - 22:00 PM",
   },
 ];
 
@@ -104,7 +104,9 @@ const Booking = ({ title, onClose, userInfo, service }) => {
         service: service?.service_name,
         cost: service?.cost,
       };
-      const bookingList = JSON.parse(localStorage.getItem("booking-list"));
+
+      const bookingList =
+        JSON.parse(localStorage.getItem("booking-list")) || [];
       bookingList?.push(value);
       localStorage.setItem("booking-list", JSON.stringify(bookingList));
     } catch (error) {

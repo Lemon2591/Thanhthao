@@ -5,45 +5,50 @@ const VerifyTransaction = ({ goBack, handleVerify, service, info }) => {
   return (
     <div>
       <div className="p-10">
-        <div>
+        <div className="booking-verify">
           <div className="flex gap-x-4">
             <img className="w-1/2 rounded-md" src={service?.img} />
-            <div>
+            <div className="booking-info-verify" style={{ width: "50%" }}>
               <div className="flex">
-                <span>Tên dịch vụ : </span>
+                <span className="abc">Tên dịch vụ : </span>
                 <span>{service?.service_name}</span>
               </div>
               <div className="flex">
-                <span>Tên dịch vụ : </span>
+                <span className="abc">Tên nhân viên : </span>
                 <span>{info?.employee}</span>
               </div>
               <div className="flex">
-                <span>Thời gian : </span>
+                <span className="abc">Thời gian : </span>
                 <span>{info?.time}</span>
               </div>
               <div className="flex">
-                <span>CSKH : </span>
+                <span className="abc">CSKH : </span>
                 <span>{info?.area}</span>
               </div>
               <div className="flex">
-                <span>Tên khách hàng : </span>
+                <span className="abc">Tên khách hàng : </span>
                 <span>{info?.fullname}</span>
               </div>
               <div className="flex">
-                <span>SDT : </span>
+                <span className="abc">SDT : </span>
                 <span>{info?.phoneNumber}</span>
               </div>
               <div className="flex">
-                <span>Email : </span>
+                <span className="abc">Email : </span>
                 <span>{info?.email}</span>
               </div>
               <div className="flex">
-                <span>Địa chỉ : </span>
+                <span className="abc">Địa chỉ : </span>
                 <span>{info?.address}</span>
               </div>
               <div className="flex">
-                <span>Số tiền : </span>
-                <span>{service?.cost}</span>
+                <span className="abc">Số tiền : </span>
+                <span>
+                  {Number(service?.cost)?.toLocaleString("it-IT", {
+                    style: "currency",
+                    currency: "VND",
+                  })}
+                </span>
               </div>
             </div>
           </div>

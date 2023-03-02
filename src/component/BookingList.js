@@ -6,20 +6,29 @@ const BookingList = () => {
     setBookingList(JSON.parse(localStorage.getItem("booking-list")));
   }, []);
   return (
-    <div className="flex justify-center px-5">
+    <div className="" style={{ display: "block" }}>
       <h1
         style={{
           fontSize: "32px",
-          maxWidth: "max-content",
+          textAlign: "center",
           fontWeight: "bold",
+          marginTop: "30px",
         }}
         className="py-16"
       >
         Các dịch vụ đã đặt
       </h1>
-      <div className="">
-        {bookingList.map((info, index) => (
-          <div className="flex justify-start items-center gap-x-5 gap-y-2 flex-wrap">
+      <div
+        className="booking-map"
+        style={{
+          width: "100%",
+          marginTop: "50px",
+          display: "flex",
+          flexWrap: "wrap",
+        }}
+      >
+        {bookingList?.map((info, index) => (
+          <div className="card-items">
             <div className="flex">
               <p style={{ fontSize: "16px" }} className="font-semibold">
                 Tên dịch vụ :{" "}
@@ -89,7 +98,10 @@ const BookingList = () => {
                 Số tiền :{" "}
               </p>
               <p style={{ fontSize: "16px" }} className="text-base">
-                {info?.cost}
+                {info.cost?.toLocaleString("it-IT", {
+                  style: "currency",
+                  currency: "VND",
+                })}
               </p>
             </div>
           </div>

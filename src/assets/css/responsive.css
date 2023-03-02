@@ -11,6 +11,10 @@
     .home-item {
         width: calc(90%/2);
     }
+
+    .card-items {
+        width: calc(100% / 2 - 20px);
+    }
 }
 
 
@@ -19,5 +23,9 @@
 @media (max-width:810px) {
     .home-item {
         width: calc(100%);
+    }
+
+    .card-items {
+        width: calc(100% - 20px);
     }
 }

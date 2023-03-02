@@ -213,8 +213,45 @@
     padding: 8rem 0 8rem 0;
 }
 
+.booking-info-verify>div {
+    justify-content: space-between;
+    height: calc(100%/9);
+    align-items: center;
+    font-size: 14px;
+}
+
+.booking-info-verify>div>span {
+    margin: 0 5px;
+}
 
 
+.booking-info-verify>div>.abc {
+    font-weight: 600;
+}
+
+.card-items {
+    background: #fff;
+    padding: 15px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .3s;
+    margin: 10px 10px;
+}
+
+.card-items:hover {
+    transform: translateY(-5px);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.card-items>div {
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+}
+
+.card-items {
+    width: calc(100% / 3 - 20px);
+}
 
 
 
